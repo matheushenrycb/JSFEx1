@@ -5,58 +5,45 @@
  */
 package br.com.jsfcarro.controller;
 
+import br.com.jsfcarro.mapeamento.CarroMap;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+//import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author laboratorio
  */
+@RequestScoped
+//@SessionScoped // O sessionscoped ira manter o objeto até
 @ManagedBean
 public class CarroBean {
-    private String modelo;
-    private String marca;
-    private String anof;
-    private String anom;
-    private String obs;
 
-    public String getModelo() {
-        return modelo;
+    private CarroMap carro;
+    private CarroModel carromod;
+
+    public CarroModel getCarromod() {
+        return carromod;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setCarromod(CarroModel carromod) {
+        this.carromod = carromod;
+    }
+    public CarroBean() {
+        this.carro = new CarroMap();
+        this.carroMod= new CarroModel();
     }
 
-    public String getMarca() {
-        return marca;
+    public void salvar() {
+        carroMod.salvar(carro);
+
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public CarroMap getCarro() {
+        return carro;
     }
 
-    public String getAnof() {
-        return anof;
+    public void setCarro(CarroMap carro) {
+        this.carro = carro;
     }
-
-    public void setAnof(String anof) {
-        this.anof = anof;
-    }
-
-    public String getAnom() {
-        return anom;
-    }
-
-    public void setAnom(String anom) {
-        this.anom = anom;
-    }
-
-    public String getObs() {
-        return obs;
-    }
-
-    public void setObs(String obs) {
-        this.obs = obs;
-    }
-    
 }

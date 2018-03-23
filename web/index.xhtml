@@ -9,12 +9,12 @@
         <h1>Cadastro de Carros</h1>
         <h:form>
             <h:panelGrid columns="2">
-            Marca: <h:inputText />
-            Modelo: <h:inputText />
-            Ano de Fabricação: <h:inputText />
-            Ano do modelo: <h:inputText />
-            Observações: <h:inputTextarea />
-            <h:commandButton value="Salvar" />
+                Marca: <h:inputText value="#{carroBean.carro.marca}"/>
+                Modelo: <h:inputText value="#{carroBean.carro.modelo}"/>
+                Ano de Fabricação: <h:inputText value="#{carroBean.carro.anof}" />
+                Ano do modelo: <h:inputText value="#{carroBean.carro.anom}"/>
+                Observações: <h:inputTextarea value="#{carroBean.carro.obs}"/>
+                <h:commandButton value="Salvar" action="#{carroBean.salvar()}"/>
             </h:panelGrid>
         </h:form>
     </h:body>
