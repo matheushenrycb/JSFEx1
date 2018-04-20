@@ -5,13 +5,31 @@
  */
 package br.com.jsfcarro.medel;
 
+import br.com.jsfcarro.mapeamento.CarroMap;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
 /**
  *
  * @author laboratorio
  */
 public class CarroModel {
+
     //fazer o CRUD
-    public void salvar( CarroMap car){
-    //configurar o hibernate
+    public void inserir(CarroMap car) {
+        
+        try {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session secao = sf.openSession();
+        Transaction tr = secao.beginTransaction();// abrir transação
+        secao.save(car);// salvar o objeto   
+        tr.commit();// ira executar o que pediu
+        secao.close();
+        sf.close();     
+        } catch (Exception e) {
+            System.out.println("erro"); 
+        }
+       
     }
 }
